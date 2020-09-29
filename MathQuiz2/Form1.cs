@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MathQuiz2
 {
     public partial class Form1 : Form
@@ -161,23 +162,23 @@ namespace MathQuiz2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (timeLeft > 0)
-            {
-                // Display the new time left
-                // by updating the Time Left label.
-                timeLeft = timeLeft - 1;
-                timeLabel.Text = timeLeft + " seconds";
-            }
-            else
-            {
-                // If the user ran out of time, stop the timer, show
-                // a MessageBox, and fill in the answers.
-                timer1.Stop();
-                timeLabel.Text = "Time's up!";
-                MessageBox.Show("You didn't finish in time.", "Sorry!");
-                sum.Value = addend1 + addend2;
-                startButton.Enabled = true;
-            }
+            //if (timeLeft > 0)
+            //{
+            //    // Display the new time left
+            //    // by updating the Time Left label.
+            //    timeLeft = timeLeft - 1;
+            //    timeLabel.Text = timeLeft + " seconds";
+            //}
+            //else
+            //{
+            //    // If the user ran out of time, stop the timer, show
+            //    // a MessageBox, and fill in the answers.
+            //    timer1.Stop();
+            //    timeLabel.Text = "Time's up!";
+            //    MessageBox.Show("You didn't finish in time.", "Sorry!");
+            //    sum.Value = addend1 + addend2;
+            //    startButton.Enabled = true;
+            //}
 
             if (CheckTheAnswer())
             {
@@ -188,6 +189,7 @@ namespace MathQuiz2
                 MessageBox.Show("You got all the answers right!",
                                 "Congratulations!");
                 startButton.Enabled = true;
+                timeLabel.BackColor = Control.DefaultBackColor;
             }
             else if (timeLeft > 0)
             {
@@ -197,6 +199,10 @@ namespace MathQuiz2
                 // Time Left label.
                 timeLeft--;
                 timeLabel.Text = timeLeft + " seconds";
+                if (timeLeft <= 5)
+                {
+                    timeLabel.BackColor = Color.Red;
+                }
             }
             else
             {
@@ -210,6 +216,7 @@ namespace MathQuiz2
                 product.Value = multiplicand * multiplier;
                 quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
+                timeLabel.BackColor = Control.DefaultBackColor;
             }
         }
 
